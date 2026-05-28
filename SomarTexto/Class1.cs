@@ -1,10 +1,11 @@
-﻿using System;
-using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.Geometry;
-using System.Collections.Generic;
-using Autodesk.AutoCAD.EditorInput;
+﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Geometry;
+using Autodesk.AutoCAD.Runtime;
+using Seltte.AutoCAD.AcadToolkit.License;
+using System;
+using System.Collections.Generic;
 
 namespace SomarTexto
 {
@@ -13,6 +14,9 @@ namespace SomarTexto
         [CommandMethod("st", CommandFlags.Modal)]
         public void SomarTextos()
         {
+            if (!EnsureLicense())
+                return;
+
             Editor ed = Autodesk.AutoCAD.ApplicationServices.Core.Application.DocumentManager.MdiActiveDocument.Editor;
             Document doc = Application.DocumentManager.MdiActiveDocument;
             Database db = doc.Database;
@@ -48,7 +52,7 @@ namespace SomarTexto
                     else if (textModified.ToString().Contains(" "))
                     {
                         string[] texts = textModified.Split(' ');
-                        
+
                         foreach (var item in texts)
                         {
                             if (!(item == "" || item == " " || item == "  "))
@@ -115,5 +119,19 @@ namespace SomarTexto
                 tr.Commit();
             }
         }
+
+        private static bool EnsureLicense()
+        {
+            try
+            {
+                LicenseGuard.Require();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

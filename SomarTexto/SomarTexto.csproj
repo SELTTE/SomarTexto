@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SomarTexto</RootNamespace>
     <AssemblyName>SomarTexto%28ST%29</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -43,6 +43,12 @@
     <Reference Include="acmgd">
       <HintPath>D:\Autodesk\AutoCAD 2020\acmgd.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Seltte.AutoCAD.AcadToolkit">
+      <HintPath>..\..\Seltte.AutoCAD\src\Seltte.AutoCAD.AcadToolkit\bin\Release\net48\Seltte.AutoCAD.AcadToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Seltte.AutoCAD.LicenseChecker">
+      <HintPath>..\..\Seltte.AutoCAD\src\Seltte.AutoCAD.AcadToolkit\bin\Release\net48\Seltte.AutoCAD.LicenseChecker.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
